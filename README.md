@@ -35,7 +35,7 @@ When someone enters a defined range, the system triggers an alarm. Once the area
 intruder-detection-system/
 │
 ├── src/
-│   └── Program.cpp   # The Arduino/ESP32 code
+│   └── IntruderDetectionSystem.cpp   # The Arduino/ESP32 code
 │
 ├── test/              # Unit/functional tests (future)
 ├── paltform.ini       # Build config
