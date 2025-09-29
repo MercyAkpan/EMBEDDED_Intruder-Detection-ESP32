@@ -65,11 +65,11 @@ intruder-detection-system/
 ---
 
 ## 📚 Learning Notes
-This project marks the start of my IoT journey:
+- This project marks the start of my IoT journey:
 
-Exploring embedded systems with ESP32
+- Exploring embedded systems with ESP32
 
-Gaining hands-on practice with sensors and actuators
+- Gaining hands-on practice with sensors and actuators
 
-Building confidence through small but functional IoT prototypes
+- Building confidence through small but functional IoT prototypes
 
