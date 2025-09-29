@@ -1,8 +1,37 @@
-#include <Arduino.h>
+/**
+ * @file main.cpp
+ * @brief Ultrasonic Intruder Detection System with Haptic Feedback
+ * 
+ * @details This program implements an intruder detection system using an ultrasonic
+ * sensor (HC-SR04 or similar) to measure distance and trigger a buzzer/vibration motor
+ * when an object is detected within a specified threshold. The system employs noise
+ * reduction through distance averaging and hysteresis-based detection to prevent
+ * false triggering.
+ * 
+ * @author [Akpan Mercy Ekerette]
+ * @date September 2025
+ * @version 1.0
+ * 
+ * @hardware
+ * - ESP32/Arduino compatible microcontroller
+ * - HC-SR04 Ultrasonic Distance Sensor
+ * - Buzzer/Vibration Motor
+ * 
+ * @dependencies
+ * - Arduino.h
+ */
 
-// Pin definitions
-// trigPin number is pin of micro-controller that sends signal
-// to the Trig pin of the Ultra-sonic sensor
+#include <Arduino.h>
+// ============================================================================
+// PIN DEFINITIONS
+// ============================================================================
+
+/**
+ * @brief GPIO pin connected to the ultrasonic sensor's trigger pin
+ * @details This pin sends a calculated pulse to initiate distance measurement
+ */
+
+
 const int trigPin = 5;
 // echoPin number is pin of micro-controller that recieves signal
 // from the Echo pin of the Ultra-sonic sensor
