@@ -30,21 +30,41 @@
  * @brief GPIO pin connected to the ultrasonic sensor's trigger pin
  * @details This pin sends a calculated pulse to initiate distance measurement
  */
-
-
 const int trigPin = 5;
-// echoPin number is pin of micro-controller that recieves signal
-// from the Echo pin of the Ultra-sonic sensor
+
+/**
+ * @brief GPIO pin connected to the ultrasonic sensor's echo pin
+ * @details This pin receives the reflected ultrasonic pulse for distance calculation
+ */
 const int echoPin = 18;
-// Vibrating pin number is the pin of the micro-controller
-// used to control the vibrating motor
+/**
+ * @brief GPIO pin connected to the buzzer/vibration motor
+ * @details Controls the haptic feedback device for intruder alerts
+ */
 const int buzzerPin = 17;
 
-// Constants
-#define SOUND_SPEED 0.034   // speed of sound in cm/µs
-#define CM_TO_INCH 0.393701
+// ============================================================================
+// CONSTANTS
+// ============================================================================
 
-// Variables
+/**
+ * @brief Speed of sound in air at room temperature
+ * @details Value in centimeters per microsecond (cm/µs)
+ */
+ #define SOUND_SPEED 0.034
+
+/**
+ * @brief Conversion factor from centimeters to inches
+ */
+ #define CM_TO_INCH 0.393701
+
+// ============================================================================
+// GLOBAL VARIABLES
+// ============================================================================
+
+/**
+ * @brief Duration of the echo pulse in microseconds
+ */
 long duration;
 float distanceCm;
 float distanceInch;
