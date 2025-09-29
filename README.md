@@ -1,16 +1,15 @@
 # Intruder Detection System (ESP32)
-
-📌 This project is part of my beginner learnings in IoT and embedded systems.  
-I’m currently undergoing a program at **[NithubUnilag](https://nithub.unilag.edu.ng/)**, and this was one of the hands-on projects to build practical skills in microcontrollers and sensors.
+📌 Beginner IoT/Embedded Systems Project
+This project is part of my learning journey at Nithub, University of Lagos, where I’m building practical skills in microcontrollers and sensors..
 
 ---
 
 ## 🚨 Project Overview
-This system uses an **ESP32** microcontroller with:
-- Ultrasonic sensor (to detect distance/movement)
-- Buzzer or vibration motor (to alert when an intruder is detected)
 
-When someone enters a defined range, the system triggers an alarm.
+An intruder detection system using an ESP32 microcontroller with:
+Ultrasonic sensor (distance/movement detection)
+Buzzer or vibration motor (intruder alert)
+When someone enters a defined range, the system triggers an alarm. Once the area is clear, the alarm resets automatically.
 
 ---
 
@@ -19,12 +18,12 @@ When someone enters a defined range, the system triggers an alarm.
 - Ultrasonic Sensor (HC-SR04 or similar)
 - Breadboard + jumper wires
 - Buzzer or vibration motor
-- Power supply (USB)
+- USB Power supply
 
 ---
 
 ## ⚙️ How It Works
-1. The ultrasonic sensor measures distance using trigger/echo pins.
+1. The ultrasonic sensor measures distance via trigger/echo pins.
 2. If the measured distance falls below a threshold (e.g., < 6 cm), the system considers it an "intruder."
 3. The buzzer/vibration motor turns ON to alert.
 4. Once the area is clear (e.g., distance > 8 cm), the system resets.
@@ -36,19 +35,16 @@ When someone enters a defined range, the system triggers an alarm.
 intruder-detection-system/
 │
 ├── src/
-│   └── main.cpp   # The Arduino/ESP32 code
+│   └── Program.cpp   # The Arduino/ESP32 code
 │
-├── test/
-├── paltform.ini
+├── test/              # Unit/functional tests (future)
+├── paltform.ini       # Build config
 │
 ├── docs/
 │   └── setup_guide.md      # Step-by-step setup notes
 │
 ├── README.md               # Main project description
-├── LICENSE                 # (optional, MIT recommended)
-├── .gitignore
-├── README.md               # Main project description
-├── LICENSE                 # (optional, MIT recommended)
+├── LICENSE                 # (MIT recommended)
 ├── .gitignore
 ```
 
@@ -56,9 +52,10 @@ intruder-detection-system/
 ---
 
 ## 📸 Demo
-![Intruder Detection Setup](docs/setup.jpg)  
-*(Picture of a breadboard setup with ESP32 and sensor and the vibration motor)*
+[Intruder Detection Setup](docs/setup.jpg)  
+(Picture of ESP32 + ultrasonic sensor + vibration motor on breadboard)
 
+🎥 (Optional: short video/GIF demo link here)
 ---
 
 ## 🔮 Future Extensions
