@@ -66,11 +66,41 @@ const int buzzerPin = 17;
  * @brief Duration of the echo pulse in microseconds
  */
 long duration;
-float distanceCm;
-float distanceInch;
-bool intruder = false;   // remember last state
 
-// Function to take an averaged distance (reduces noise)
+/**
+ * @brief Measured distance in centimeters
+ */
+float distanceCm;
+
+/**
+ * @brief Measured distance in inches
+ */
+float distanceInch;
+
+/**
+ * @brief Intruder detection state flag
+ * @details Maintains the last known detection state to implement hysteresis
+ * - true: Intruder currently detected
+ * - false: No intruder detected
+ */
+bool intruder = false;
+
+/**
+ * @brief Measures distance using ultrasonic sensor with noise reduction
+ * 
+ * @details Performs multiple distance measurements and returns their average
+ * to reduce sensor noise and improve accuracy. Each measurement cycle:
+ * 1. Sends a 10µs trigger pulse
+ * 2. Measures the echo pulse duration
+ * 3. Applies a 30ms timeout (~5m max range)
+ * 4. Averages 5 valid readings
+ * 
+ * @return float Average distance in centimeters (0 if no valid readings)
+ * 
+ * @note The function includes a 10ms delay between measurements to allow
+ * the sensor to stabilize
+ */
+
 float getDistanceCm() {
   long sum = 0;
   for (int i = 0; i < 5; i++) {
@@ -102,6 +132,22 @@ float getDistanceCm() {
   return (avg * SOUND_SPEED) / 2;
 }
 
+/**
+ * @brief System initialization routine
+ * 
+ * @details Configures hardware pins, initializes serial communication,
+ * and sets the system to a safe initial state. Executed once at startup.
+ * 
+ * Serial Configuration:
+ * - Baud rate: 115200
+ * 
+ * Pin Configuration:
+ * - trigPin: OUTPUT (sensor trigger)
+ * - echoPin: INPUT (sensor echo)
+ * - buzzerPin: OUTPUT (haptic feedback, initially LOW)
+ * 
+ * @return void
+ */
 void setup() {
   Serial.begin(115200);
   //OUTPUT here denotes OUTPUT from the micro-controller
@@ -114,6 +160,28 @@ void setup() {
   Serial.println("System Ready...");
 }
 
+/**
+ * @brief Main program execution loop
+ * 
+ * @details Continuously monitors distance and manages intruder detection with
+ * hysteresis to prevent oscillation. The system operates as follows:
+ * 
+ * Detection Logic:
+ * - Triggers alert when distance < 6cm (intruder detected)
+ * - Clears alert when distance > 8cm (area clear)
+ * - 2cm hysteresis gap prevents rapid state changes
+ * 
+ * Haptic Feedback:
+ * - Buzzer/motor activates on detection
+ * - Deactivates when intruder leaves detection zone
+ * 
+ * Update Rate: 2Hz (500ms delay between measurements)
+ * 
+ * @return void
+ * 
+ * @note The hysteresis implementation prevents false triggers caused by
+ * objects near the detection boundary
+ */
 void loop() {
   // Get stable distance
   distanceCm = getDistanceCm();
