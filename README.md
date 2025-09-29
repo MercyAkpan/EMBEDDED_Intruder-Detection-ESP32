@@ -61,12 +61,15 @@ intruder-detection-system/
 ## 🔮 Future Extensions
 - Send alerts via Firebase
 - Trigger webhooks for IoT dashboards
-- Control via mobile app
-
+- Integrate with a mobile control app
 ---
 
 ## 📚 Learning Notes
-This project is part of my IoT learning journey:
-- Finding my software inclinations in IoT
-- Starting from embedded systems with ESP32
-- Exploring practical microcontroller projects
+This project marks the start of my IoT journey:
+
+Exploring embedded systems with ESP32
+
+Gaining hands-on practice with sensors and actuators
+
+Building confidence through small but functional IoT prototypes
+
